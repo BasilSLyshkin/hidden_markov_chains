@@ -135,9 +135,32 @@ def baum_welch(
         A: list[list] = None,
         B: list[dict] = None,
         init_prob: list = None,
-        n_st: int = 2, 
-        n_sym: int = 6, 
+        n_st: int = 2,
+        n_sym: int = 6,
         n_iter: int = 100):
+    """Имплементаций алгоритма Баума-Велша для оценки параметров
+    скрытой Марковской цепи
+
+    Args:
+        observations (list): 
+        Наблюдения
+        A (list[list], optional): 
+        Начальное состояние матрицы переходов. Defaults to None.
+
+        B (list[dict], optional): 
+        Начальное состояние матрицы эмиссий. Defaults to None.
+        init_prob (list, optional): 
+        Начальное состояний матрицы начальных состояний ಠ__ಠ. Defaults to None.
+        n_st (int, optional): 
+        Кол-во состояний. Defaults to 2.
+        n_sym (int, optional): 
+        Кол-во симоволов. Defaults to 6.
+        n_iter (int, optional): 
+        Кол-во итераций. Defaults to 100.
+
+    Returns:
+        _type_: _description_
+    """    
 
     if A is None:
         A = np.ones((n_st, n_st))
