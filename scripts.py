@@ -143,23 +143,24 @@ def baum_welch(
 
     Args:
         observations (list): 
-        Наблюдения
+        Наблюдения.
+
         A (list[list], optional): 
         Начальное состояние матрицы переходов. Defaults to None.
 
         B (list[dict], optional): 
         Начальное состояние матрицы эмиссий. Defaults to None.
         init_prob (list, optional): 
+        
         Начальное состояний матрицы начальных состояний ಠ__ಠ. Defaults to None.
         n_st (int, optional): 
         Кол-во состояний. Defaults to 2.
+
         n_sym (int, optional): 
         Кол-во симоволов. Defaults to 6.
+
         n_iter (int, optional): 
         Кол-во итераций. Defaults to 100.
-
-    Returns:
-        _type_: _description_
     """    
 
     if A is None:
