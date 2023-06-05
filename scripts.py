@@ -189,18 +189,16 @@ def baum_welch(
             A,
             B).T
 
-        # Transition matrix re-assignment
         grid = np.zeros((n_st, n_st, n_ob - 1))
         for t in range(1, n_ob):
-            p_x = np.dot(np.dot(f_grid[t-1, :].T, A) * B[:, observations[t]].T, b_grid[t, :])  # P(X)
+            p_x = np.dot(np.dot(f_grid[t-1, :].T, A) * B[:, observations[t]].T, b_grid[t, :])  
             for i in range(n_st):
-                i_sum = f_grid[t-1, i] * A[i, :] * B[:, observations[t]].T * b_grid[t, :].T  # argument of a sum
+                i_sum = f_grid[t-1, i] * A[i, :] * B[:, observations[t]].T * b_grid[t, :].T  
                 grid[i, :, t-1] = i_sum / p_x
 
-        s_grid = np.sum(grid, axis=1)  # sum of arguments along second axis
+        s_grid = np.sum(grid, axis=1)  
         A = np.sum(grid, 2) / np.sum(s_grid, axis=1).reshape((-1, 1))
 
-        # Emission matrix re-assignment
         s_grid = np.hstack((s_grid, np.sum(grid[:, :, n_ob - 2], axis=0).reshape((-1, 1))))
 
         p_x = np.sum(s_grid, axis=1)
